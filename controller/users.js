@@ -114,13 +114,13 @@ module.exports = (app, passport) => {
 				var smtpTransport = nodemailer.createTransport({
 					service: 'Gmail',
 					auth: {
-						user: secret.auth.user,
-						pass: secret.auth.pass
+						user: 'noorjani42@gmail.com',
+						pass: 'nooryu12'
 					}
 				})
 				var mailOptions = {
 					to: user.email,
-					from: 'Rating ' + '<' + secret.auth.user + '>', // only display rating,
+					from: 'Rating ' + '<' + 'noorjani42@gmail.com' + '>', // only display rating,
 					subject: 'Rating app password reset',
 					text: 'Paaword reset for: ' + user.email + '\n\n' + 'click the link below to complete process: \n\n' +
 						'http://localhost:3000/reset/' + rand + '\n\n'
@@ -213,13 +213,13 @@ module.exports = (app, passport) => {
 				var smtpTransport = nodemailer.createTransport({
 					service: 'Gmail',
 					auth: {
-						user: secret.auth.user,
-						pass: secret.auth.pass
+						user: 'noorjani42@gmail.com',
+						pass: 'nooryu12'
 					}
 				})
 				var mailOptions = {
 					to: user.email,
-					from: 'Rating ' + '<' + secret.auth.user + '>', // only display rating,
+					from: 'Rating ' + '<' + 'noorjani42@gmail.com' + '>', // only display rating,
 					subject: 'Password has been updated',
 					text: 'this is aconfirmation email that you password for ' + user.email + ' is updated '
 				}

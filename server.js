@@ -1,6 +1,6 @@
 var express= require('express');
 const path = require('path')
-
+const keys = require("./config/keys");
 const  _ = require('lodash')
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser') // allow data to be send to the fron end in string form;
@@ -52,7 +52,8 @@ const client = new Global()
 
 
 mongoose.Promise = global.Promise
- mongoose.connect('mongodb://nooryu12:nor2dude@ds239047.mlab.com:39047/socialy')
+ mongoose.connect(keys.mongoURI)
+
 
 require('./config/passport')
 require('./secret/secret')
@@ -78,7 +79,7 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session())
-	
+
 
 require('./controller/users')(app,passport);
 require('./controller/me')(app);
