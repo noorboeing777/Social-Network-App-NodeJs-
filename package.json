@@ -1,0 +1,39 @@
+{
+  "name": "rating",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
+    "ejs-mate": "^2.3.0",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0",
+    "express-promise-router": "^2.0.0",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
+    "fs-extra": "^5.0.0",
+    "helmet": "^3.9.0",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "mongoose": "^4.13.4",
+    "nodemailer": "^4.4.0",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "resize-img": "^1.1.2",
+    "socket.io": "^2.0.4",
+    "underscore": "^1.8.3"
+  }
+}

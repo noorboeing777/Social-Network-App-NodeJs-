@@ -1,0 +1,50 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="css/allusers.css" rel="stylesheet">
+<div class="container">
+	<div class="row">
+        <% for(var i =0;i<alluser.length;i++){ %>
+		<div class="col-lg-3 col-sm-6">
+
+            <div class="card hovercard">
+                <div class="cardheader">
+
+                </div>
+                <div class="avatar">
+                    <% if(alluser[i].image == 'user.png'){ %>
+                    <img alt="" src="/image/user.png %>">
+                    <% } else { %>
+                    <img alt="" src="/product_images/<%= alluser[i]._id %>/<%= alluser[i].image %>">
+                    <% } %>
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="/user/<%= alluser[i].username %>"><%= alluser[i].fullname %></a>
+                    </div>
+                    <div class="desc">@<%= alluser[i].username %></div>
+                    <div class="desc"><%= alluser[i].job %></div>
+                    
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher"
+                       href="https://plus.google.com/+ahmshahnuralam">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <% } %>
+
+	</div>
+</div>

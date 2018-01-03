@@ -1,0 +1,32 @@
+<html>
+   <head>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   </head>
+   <body>
+      <div id="me">
+         <% for(var i = 0;i< data2.post.length; i++){ %>
+         <form method="post" action="/posts" >
+            <h3><%= data2.post[i]._id %></h3>
+            <h3><%= data2.post[i].post %></h3>
+            <p><%= data2.post[i].username %></p>
+            <p><%= data2.post[i].date %></p>
+            comments are:
+            <% for(var j =0;j< data2.post[i].comments.length;j++){ %>
+            <p><%= data2.post[i].comments[j].comment %></p>
+            <% } %>
+            likes: <%= data2.post[i].likes %>
+            <input type="text" id="comment" name="comment">
+            <button id="favourite">pst comment</button>
+            <input type="hidden" name="id" id="id" value="<%= data2.post[i]._id %>">
+            <input type="hidden" name="post" id="post" value="<%= data2.post[i].post %>">
+         </form>
+         <button id="like" type="submit">jjjx</button>
+         <% } %>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script src="/js/comment.js"></script>
+      <script src="/public/js/like.js"></script>
+   </body>
+</html>

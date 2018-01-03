@@ -1,0 +1,78 @@
+<html>
+<head></head>
+<body>
+    <div class="container">
+	<div class="row">
+		<div class="span5">
+            <table class="table table-striped table-condensed">
+                  <thead>
+                  <tr>
+                      <th>Username</th>
+                      <th>Date registered</th>
+                      <th>Role</th>
+                      <th>Status</th> 
+                      <th>Change Status</th>
+                  </tr>
+              </thead>   
+              <tbody>
+                  <% for(var i=0;i<users.length;i++) { %>
+                <tr>
+                    <td><%= users[i].username %></td>
+                    <td><%= users[i].datejoined %></td>
+                    <td>User</td>
+                    <td>
+                        <% if(users[i].status == 'Active'){ %>
+                        <span class="label label-success"><%= users[i].status %></span>
+                        <% }  else if(users[i].status == 'Banned'){ %>
+                         <span class="label label-danger"><%= users[i].status %></span>
+                        <% } else { %>
+                        <span class="label label-warning"><%= users[i].status %></span>
+                        <% } %>
+                    </td>  
+                    <td>
+                        <form method="post" action="/admin">
+                            <input type="" id="name" name="name" value="<%=users[i].username %>">
+                      <select id="status" name="status" class="" required="required">
+                              
+                                <option value="Active">Active</option>
+                                <option value="Banned">Banned</option>
+                            <option value="Pending">Pending</option>
+                            
+                               
+                            </select>
+                             <button type="submit" id="submit">Apply change</button>
+                            </form>
+                        
+                    </td>
+                </tr>
+           
+                  <% } %>
+                 
+              </tbody>
+            </table>
+            
+            </div>
+	</div>
+</div>
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+        <script src="/js/jquery.1.11.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    
+     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </body>    
+
+
+
+
+
+
+
+
+
+
+</html>
+ 
+		 

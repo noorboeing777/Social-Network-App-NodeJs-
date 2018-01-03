@@ -1,0 +1,298 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Day-Day</title>
+      <link href="/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/css/font-awesome.min.css" rel="stylesheet">
+      <link href="/css/animate.min.css" rel="stylesheet">
+      <link href="/css/timeline.css" rel="stylesheet">
+      <link href="/css/cover.css" rel="stylesheet">
+      <link href="/css/user_detail.css" rel="stylesheet">
+      <link href="/css/profile.css" rel="stylesheet">
+      <link href="/css/friends.css" rel="stylesheet">
+      <link href="/css/photos1.css" rel="stylesheet">
+      <link href="/css/messages1.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+      <script src="/js/jquery.1.11.1.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+      <script src="/js/custom.js"></script>
+      <script src="https://use.fontawesome.com/b141d1971d.js"></script>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+      <script src="/js/request.js"></script>
+      <script src="/js/comment.js"></script>
+      <script src="/js/chatui.js"></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+   </head>
+   <body>
+      <nav class="navbar navbar-white navbar-fixed-top">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="index.html"><b>DayDay</b></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav navbar-right">
+                  <li class="actives"><a href="/user/<%=data.username %>">Profile</a></li>
+                  <li><a href="/logout">Logout</a></li>
+                  <li><a href="#" class="nav-controller"><i class="fa fa-user"></i></a></li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div class="container page-content ">
+         <div class="row">
+            <% for(var i =0;i < data.friendList.length; i++){ %>
+            <% if(data.friendList.length > 0) { %>
+            <div class="friend" hidden>@
+               <%= data.friendList[i].friendName %>
+            </div>
+            <% } %>
+            <% } %>
+            <!-- left links -->
+            <div class="col-md-3">
+               <div class="profile-nav">
+                  <div class="widget">
+                     <div class="widget-body">
+                        <div class="user-heading round">
+                           <a href="#">
+                           <img src="/product_images/<%= data._id %>/<%= data.image %>" alt="">
+                           </a>
+                           <h1>
+                              <%= data.fullname %>
+                           </h1>
+                           <p>@
+                              <%= data.username %>
+                           </p>
+                        </div>
+                        <ul class="nav nav-pills nav-stacked">
+                           <li class="active"><a href="/user/<%=data.username %>"> <i class="fa fa-user"></i> Profile</a></li>
+                           <li>
+                              <a href="/message/<%= data._id %>"> 
+                              <i class="fa fa-envelope"></i> Messages
+                              <% for(var i = 0;i<msg.length;i++) { %>
+                              <% if(msg[i].userToName == data.fullname  && !msg[i].isRead ){ 
+                                 var total = i +1
+                                 %>
+                              <% } else {
+                                 var total = 0
+                                 %>
+                              <% } %>
+                              <% } %>
+                              <span class="label label-info pull-right r-activity"><%= total %></span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href=""> 
+                              <i class="fa fa-envelope"></i> Photos 
+                              <% if(g) { %>
+                              <span class="label label-info pull-right r-activity"><%= g.length %></span>
+                              <% } %>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="/requests"> 
+                              <i class="fa fa-envelope"></i> Friend Requests
+                              <span class="label label-info pull-right r-activity"><%= data.request.length %></span>
+                              </a>
+                           </li>
+                           <br></br>
+                           <h5>Edit</h5>
+                           <li class="active"><a href="/editProfile"> <i class="fa fa-user"></i> Edit Profile/Setting</a></li>
+                           <li class="active"><a href="/me"> <i class="fa fa-user"></i> Edit UserImage</a></li>
+                           <li class="active"><a href="/edit/<%=data._id %>"> <i class="fa fa-user"></i> Edit Photos</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- end left links -->
+            <!-- center posts -->
+            <div class="col-md-6">
+               <div class="row">
+                  <!-- left posts-->
+                  <div class="col-md-12">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <!-- post state form -->
+                           <!--  posts -->
+                           <%if(data.post.length == 0) { %>
+                           <div>NO posts By you</div>
+                           <% } %>
+                           <% for(var i = data.post.length-1; i>=0;i--){ %>
+                           <form method="post" action="/posts">
+                              <div class="box box-widget">
+                                 <div class="box-header with-border">
+                                    <div class="user-block">
+                                       <img class="img-circle" src="/product_images/<%= data._id %>/<%= data.image %>" alt="User Image">
+                                       <%
+                                          var options = {  
+                                          	year: "numeric", month: "short",  
+                                          	day: "numeric", hour: "2-digit", minute: "2-digit"  
+                                          }
+                                          	
+                                          
+                                          	var date = data.post[i].date.toLocaleTimeString("en-US",options);
+                                          %>
+                                       <span class="username"><a href="#"><%= data.post[i].username %></a></span>
+                                       <span class="description">Shared publicly - <%= date %></span>
+                                    </div>
+                                 </div>
+                                 <div class="box-body" style="display: block;">
+                                    <p>
+                                       <%= data.post[i].post %>
+                                    </p>
+                                    <input type="hidden" name="id2" id="id2" value="<%= data.post[i]._id %>">
+                                    <input type="hidden" name="rec2" id="rec2" value="<%= data.username %>">
+                                    <button type="button" name="like" id="like" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                                    <span class="pull-right text-muted"><%= data.post[i].likes.length %> likes - <%= data.post[i].comments.length %> comments</span>
+                                 </div>
+                                 <div class="box-footer box-comments" style="display: block;">
+                                    <% for(var j =0;j< data.post[i].comments.length; j++){ %>
+                                    <div class="box-comment">
+                                       <img class="img-circle img-sm" src="/product_images/<%= data.post[i].comments[j].userId %>/<%= data.post[i].comments[j].image %>" alt="User Image">
+                                       <div class="comment-text">
+                                          <span class="username">
+                                          <%= data.post[i].comments[j].name %>
+                                          <%
+                                             var options = {  
+                                             	
+                                             	 weekday: "long", hour: "2-digit", minute: "2-digit"  
+                                             }
+                                             	
+                                             
+                                             	var date2 = data.post[i].comments[j].date.toLocaleTimeString("en-US",options);
+                                             %>
+                                          <span class="text-muted pull-right"><%= date2 %></span>
+                                          </span>
+                                          <%= data.post[i].comments[j].comment %>
+                                       </div>
+                                    </div>
+                                    <% } %>
+                                 </div>
+                                 <div class="box-footer" style="display: block;">
+                                    <img class="img-responsive img-circle img-sm" src="/product_images/<%= data._id %>/<%= data.image %>" alt="Alt Text">
+                                    <div class="img-push">
+                                       <input id="comment" name="comment" type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                                    </div>
+                                    <input type="hidden" id="favourite">
+                                    <input type="hidden" name="id" id="id" value="<%= data.post[i]._id %>">
+                                    <input type="hidden" name="post" id="post" value="<%=data.post[i].post %>">
+                                    <input type="hidden" name="receiver" id="receiver" value="<%=data.username %>">
+                                 </div>
+                              </div>
+                              <!--  end posts -->
+                           </form>
+                           <% } %>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- end left posts-->
+               </div>
+            </div>
+            <!-- end  center posts -->
+            <!-- right posts -->
+            <div class="col-md-3">
+               <!-- Friends activity -->
+               <!-- People You May Know -->
+               <div class="widget">
+                  <div class="widget-header">
+                     <h3 class="widget-caption">People You May Know</h3>
+                  </div>
+                  <div class="widget-body bordered-top bordered-sky">
+                     <div class="card">
+                        <div class="content">
+                           <ul class="list-unstyled team-members">
+                              <% for(var i=0;i<myarray.length;i++){ %>
+                              <%if(data.username !== myarray[i].username){%>
+                              <li>
+                                 <div class="row">
+                                    <div class="col-xs-3">
+                                       <div class="avatar">
+                                          <img src="/product_images/<%= myarray[i]._id %>/<%= myarray[i].image %>" alt="Circle Image" class="img-circle img-padding img-responsive">
+                                       </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                       <%= myarray[i].username%>
+                                    </div>
+                                    <div class="col-xs-3 text-right">
+                                       <btn class="btn btn-sm btn-azure btn-icon"><a href="/user/<%=myarray[i].username %>"><i class="fa fa-user"></i></a></btn>
+                                    </div>
+                                 </div>
+                              </li>
+                              <% } %>
+                              <% } %>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- End people yout may know -->
+            </div>
+            <!-- end right posts -->
+         </div>
+      </div>
+      <!-- Online users sidebar content-->
+      <div class="chat-sidebar focus">
+         <div class="list-group text-left">
+            <p class="text-center visible-xs"><a href="#" class="hide-chat btn btn-success">Hide</a></p>
+            <p class="text-center chat-title">Online users</p>
+            <div class="online onlineFriends"></div>
+         </div>
+      </div>
+      </div>
+      <!-- Online users sidebar content-->
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+         var socket = io()
+         
+         socket.on('connect', function() {
+             console.log('connected to server')
+         
+             var room = 'Global Room';
+             var name = $('#name-user').val();
+             var img = $('#name-image').val()
+             var userId = $('#userId').val()
+             console.log(img)
+             socket.emit('global room', {
+                 room,
+                 name,
+                 img,
+                 userId
+             })
+             console.log(room)
+         })
+         socket.on('loggeduser', function(users) {
+         
+             var friends = $('.friend').text();
+             var friend = friends.split('@')
+             var arr = []
+             var ol = $('<a class="list-group-item" style="padding-top:10px"></a>')
+             for (var i = 0; i < users.length; i++) {
+                 if (friend.indexOf(users[i].name) > -1) {
+                     arr.push(users[i])
+                     ol.append(` <i class="fa fa-check-circle connected-status"></i>
+         
+           &nbsp;<span class="chat-user-name"><a href="/user/${users[i].name}">${users[i].name}</a></span><br></br>`)
+                 }
+         
+             }
+         
+         
+             $('.online').html(ol)
+             var friends = $('.online').text();
+             var friend = friends.split(',')
+         
+         
+         })
+         
+      </script>
+   </body>
+</html>

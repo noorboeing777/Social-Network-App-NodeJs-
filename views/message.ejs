@@ -1,0 +1,161 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Day-Day</title>
+      <link href="/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/css/font-awesome.min.css" rel="stylesheet">
+      <link href="/css/animate.min.css" rel="stylesheet">
+      <link href="/css/timeline.css" rel="stylesheet">
+      <link href="/css/cover.css" rel="stylesheet">
+      <link href="/css/user_detail.css" rel="stylesheet">
+      <link href="/css/profile.css" rel="stylesheet">
+      <link href="/css/friends.css" rel="stylesheet">
+      <link href="/css/photos1.css" rel="stylesheet">
+      <link href="/css/messages1.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+      <script src="/js/jquery.1.11.1.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+      <script src="/js/custom.js"></script>
+      <script src="https://use.fontawesome.com/b141d1971d.js"></script>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+      <script src="/js/request.js"></script>
+      <script src="/js/comment.js"></script>
+      <script src="/js/chatui.js"></script>	
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>	
+   </head>
+   <body>
+      <body>
+         <nav class="navbar navbar-white navbar-fixed-top">
+            <div class="container">
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="index.html"><b>DayDay</b></a>
+               </div>
+               <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                     <li><a href="/profile">Home</a></li>
+                     <li><a href="/logout">Logout</a></li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+         <div class="container page-content">
+            <div class="row">
+               <div class="col-md-4 bg-white">
+                  <div class=" row border-bottom padding-sm" style="height: 40px;">
+                     Member
+                  </div>
+                  <!-- member list -->
+                  <ul class="friend-list">
+                     <!--
+                        <li class="active animated bounceInDown">
+                          <a href="#" class="clearfix">
+                            <img src="img/Friends/guy-1.jpg" alt="" class="img-circle">
+                            <div class="friend-name"> 
+                              <strong>John Doe</strong>
+                            </div>
+                            <div class="last-message text-muted">Hello, Are you there?</div>
+                            <small class="time text-muted">Just now</small>
+                            <small class="chat-alert label label-danger">1</small>
+                          </a>
+                        </li>9da
+                        -->             <% if(data3) {%>
+                     <% for(var i = data3.length-1; i>=0 ;i--) { %>
+                     <li>
+                        <a href="/message/<%=data3[i].body.userTo %>" class="clearfix" id="touch">
+                           <img style="margin-right:15px" src="/product_images/<%= data3[i].body.userTo %>/<%= data3[i].body.image %>" alt="" class="img-circle">
+                           <div class="friend-name"> 
+                              <strong><%= data3[i].body.userToName %></strong>
+                           </div>
+                           <div class="last-message text-muted"><%= data3[i].body.body %></div>
+                           <% var options = {hour:'numeric',minute:'numeric' };
+                              var date = data3[i].body.createdAt.toLocaleDateString("en-US",options);
+                              
+                              %>
+                           <small class="time text-muted"><%=date %></small>
+                           <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+                        </a>
+                     </li>
+                     <% } %>
+                     <% } %>
+                  </ul>
+               </div>
+               <!--=========================================================-->
+               <!-- selected chat -->
+               <div class="col-md-8 bg-white ">
+                  <di>Send message to:   <strong><%= data1.fullname %></strong></di>
+                  <input type="hidden" name="receiverId" id="receiverId" class="form-control" value="<%= data1._id %>"><br>
+                  <input type="hidden" name="Rimage" id="Rimage" class="form-control" value="<%= data1.image %>"><br>
+                  <div class="chat-message " style="max-height: 500px;overflow-y:auto ">
+                     <ul class="chat msg" >
+                        <% data2.forEach(function(val) { %>
+                        <% if(val.userFromName == user.fullname){ %>
+                        <li class="left clearfix">
+                           <span class="chat-img pull-left">
+                           <img src="/product_images/<%= user._id %>/<%= user.image %>" alt="User Avatar">
+                           </span>
+                           <div class="chat-body clearfix">
+                              <div class="header">
+                                 <strong class="primary-font"><%= val.userFromName %></strong>
+                                 <% var options = {hour:'numeric',minute:'numeric' };
+                                    var date = val.createdAt.toLocaleDateString("en-US",options);
+                                    
+                                    %>
+                                 <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> <%= date %></small>
+                              </div>
+                              <p>
+                                 <%= val.body %>
+                              </p>
+                           </div>
+                        </li>
+                        <% } else {%>
+                        <li class="right clearfix">
+                           <span class="chat-img pull-right">
+                           <img src="/product_images/<%= data1._id %>/<%= data1.image %>" alt="User Avatar">
+                           </span>
+                           <div class="chat-body clearfix">
+                              <div class="header">
+                                 <strong class="primary-font"><%= val.userFromName %></strong>
+                                 <% var options = {hour:'numeric',minute:'numeric' };
+                                    var date = val.createdAt.toLocaleDateString("en-US",options);
+                                    
+                                    %>
+                                 <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> <%= date %></small>
+                              </div>
+                              <p>
+                                 <%= val.body %>
+                              </p>
+                           </div>
+                        </li>
+                        <% } %>
+                        <% }) %>
+                     </ul>
+                  </div>
+                  <div class="chat-box_ bg-white">
+                     <div class="input-group">
+                        <input class="form-control border no-shadow no-rounded" id="msg" name="message" placeholder="Type your message here">
+                        <span class="input-group-btn">
+                        <input class="btn btn-success no-rounded" type="submit" id="message" name="send">
+                        </span>
+                     </div>
+                     <!-- /input-group --> 
+                  </div>
+               </div>
+            </div>
+         </div>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+         <script src="/js/chat.js"></script>
+         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+         <script src="/js/request.js"></script>
+         <script src="/js/comment.js"></script>
+
+</body>
+</html>

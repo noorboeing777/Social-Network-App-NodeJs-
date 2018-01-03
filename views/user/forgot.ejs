@@ -1,0 +1,81 @@
+	
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Forgot Password</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link href="css/simple.css" rel="stylesheet">
+	 <link href="css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<div class="container">
+    <br><br>
+    <div class="text-center reg_msg">
+        <h1><a href="/">Socialy</a></h1>
+    </div>
+   <br><br>
+   <div class="banner-title text-center reg_msg">
+        <h2 class="fancy"><span>Enter Your Email</span></h2>
+   </div><br>
+    <p class="text-center">Please enter your email and a password reset link will be sent.</p>
+    <div class="row signup">
+        
+        <% if(hasErrors) {%>
+            <% for(var i = 0; i < messages.length; i++) {%>
+                <div class="alert alert-danger">
+                   <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                       &times;
+                   </a>
+                   <%= messages[i] %>
+                    
+                </div>
+            <% } %>
+        <% } %>
+        
+        <% if(noErrors) {%>
+            <div class="alert alert-info">
+               <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                   &times;
+               </a>
+               <%= info %>
+
+            </div>
+        <% } %>
+
+        <form method="POST" action="/forgot">
+            <div class="form-group input_group">
+                <input id="email" class="form-control" name="email" type="text" autocomplete="on" placeholder="EMAIL" style="margin-bottom:20px;">
+            </div>
+
+            <div class="form-group" id="submit">
+                <input type="submit" value="Send" class="form-control btn btn-primary" name="submit">
+            </div>
+        </form>
+
+        <div>
+            <h4>Already reset your password? <a href="/login">Login</a></h4>
+        </div>
+
+    </div>
+</div>
+	</body>
+</html>

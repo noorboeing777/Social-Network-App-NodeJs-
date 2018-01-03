@@ -1,0 +1,430 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Socialy</title>
+      <link href="/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/css/font-awesome.min.css" rel="stylesheet">
+      <link href="/css/animate.min.css" rel="stylesheet">
+      <link href="/css/timeline.css" rel="stylesheet">
+      <link href="/css/cover.css" rel="stylesheet">
+      <link href="/css/user_detail.css" rel="stylesheet">
+      <link href="/css/profile.css" rel="stylesheet">
+      <link href="/css/friends.css" rel="stylesheet">
+      <link href="/css/photos1.css" rel="stylesheet">
+      <link href="/css/messages1.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+      <script src="/js/jquery.1.11.1.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+      <script src="/js/custom.js"></script>
+      <script src="https://use.fontawesome.com/b141d1971d.js"></script>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+      <script src="/js/request.js"></script>
+      <script src="/js/comment.js"></script>
+      <script src="/js/chatui.js"></script>	
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>	
+   </head>
+   <body>
+      <nav class="navbar navbar-white navbar-fixed-top">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="index.html"><b>Socialy</b></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav navbar-right">
+                  <li><a href="/profile">Home</a></li>
+                  <li><a href="/all_user">Users</a></li>
+                  <li><a href="/logout">Logout</a></li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <!-- Begin page content -->
+      <div class="container page-content">
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="bg-picture" style="background-image:url('/image/profile-cover.jpg')">
+               <span class="bg-picture-overlay"></span><!-- overlay -->
+               <!-- meta -->
+               <div class="box-layout meta bottom">
+                  <div class="col-md-6 clearfix">
+                     <span class="img-wrapper pull-left m-r-15">
+                     <img src="/product_images/<%= user._id %>/<%= user.image %>" alt="" style="width:64px" class="br-radius">
+                     </span>
+                     <div class="media-body">
+                        <h3 class="text-white mb-2 m-t-10 ellipsis"><%= user.fullname %></h3>
+                        <h5 class="text-white">@<%= user.username %></h5>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="pull-right">
+                        <% if(user.username != me.username){ %>
+                        <button class="btn btn-azure" id="request" type="submit">Add as a Friend</button>
+                        <button class="btn btn-azure"><a href="/message/<%=user._id %> ">Send a Message</a></button>
+                        <input type="hidden" id="receiver" value="<%= receiver %>">
+                        <input type="hidden" id="sender" value="<%= me.username %>">
+                        <% } else { %>
+                        <button class="btn btn-azure"><a href="/profile ">Go to Home</a></button>
+                        <% } %>
+                     </div>
+                  </div>
+               </div>
+               <!--/ meta -->
+            </div>
+         </div>
+      </div>
+      <div class="row">
+      <!-- Nav tabs -->
+      <ul class="nav nav-pills nav-pills-custom-minimal custom-minimal-bottom profile-tabs">
+         <li role="presentation" class="active"><a href="#timeline" aria-controls="timeline" role="tab" data-toggle="tab">Timeline</a></li>
+         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">About</a></li>
+         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Friends</a></li>
+         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Photos</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+      <!-- Timeline -->
+      <div role="tabpanel" class="tab-pane active" id="timeline">
+         <div class="row">
+            <div class="col-md-5">
+               <div class="widget">
+                  <div class="widget-header">
+                     <h3 class="widget-caption">About</h3>
+                  </div>
+                  <div class="widget-body bordered-top bordered-sky">
+                     <ul class="list-unstyled profile-about margin-none">
+                        <li class="padding-v-5">
+                           <div class="row">
+                              <div class="col-sm-4"><span class="text-muted">Date of Birth</span></div>
+                              <div class="col-sm-8"><%= user.birthday %></div>
+                           </div>
+                        </li>
+                        <li class="padding-v-5">
+                           <div class="row">
+                              <div class="col-sm-4"><span class="text-muted">Job</span></div>
+                              <div class="col-sm-8"><%= user.job %></div>
+                           </div>
+                        </li>
+                        <li class="padding-v-5">
+                           <div class="row">
+                              <div class="col-sm-4"><span class="text-muted">Gender</span></div>
+                              <div class="col-sm-8"><%= user.gender %></div>
+                           </div>
+                        </li>
+                        <li class="padding-v-5">
+                           <div class="row">
+                              <div class="col-sm-4"><span class="text-muted">Lives in</span></div>
+                              <div class="col-sm-8"><%= user.address %></div>
+                           </div>
+                        </li>
+                        <li class="padding-v-5">
+                           <div class="row">
+                              <div class="col-sm-4"><span class="text-muted">School</span></div>
+                              <div class="col-sm-8">249</div>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="widget">
+                  <div class="widget-header">
+                     <h3 class="widget-caption">Hobbies</h3>
+                  </div>
+                  <div class="widget-body bordered-top bordered-sky">
+                     <ul class="list-unstyled profile-about margin-none">
+                        <li class="padding-v-5">
+                           <div class="row">
+                              <div class="col-sm-4"><span class="text-muted">Hobbies</span></div>
+                              <div class="col-sm-8"><%= user.hobbies %></div>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="widget widget-friends">
+                  <div class="widget-header">
+                     <h3 class="widget-caption">Friends</h3>
+                  </div>
+                  <div class="widget-body bordered-top  bordered-sky">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <ul class="img-grid" style="margin: 0 auto;">
+                              <% for(var i = 0;i < user.friendList.length;i++) { %>
+                              <li>
+                                 <a href="/user/<%=user.friendList[i].friendName %>">
+                                 <img src="/product_images/<%= user.friendList[i].friendId %>/<%- user.friendList[i].image %>"> 
+                                 </a>
+                              </li>
+                              <% } %>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget widget-friends">
+                  <div class="widget-header">
+                     <h3 class="widget-caption">Photos</h3>
+                  </div>
+                  <div class="widget-body bordered-top  bordered-sky">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <ul class="img-grid" style="margin: 0 auto;">
+                              <% if(g) { %>
+                              <% for(var i = 0;i < g.length-1 ;i++) { %>
+                              <li>
+                                 <a href="#">
+                                 <img src="/product_images/<%= user._id %>/gallery/thumbs/<%= g[i] %>"> 
+                                 </a>
+                                 <div class="item-img-overlay">
+                                 </div>
+                              </li>
+                              <% } %>
+                              <% } %>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!--============= timeline posts-->
+            <div class="col-md-7">
+               <div class="row">
+                  <!-- left posts-->
+                  <div class="col-md-12">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <!-- post state form -->
+                           <div class="box profile-info n-border-top">
+                              <form action="/post" method="post">
+                                 <input type="hidden" name="rec" id="rec" value="<%=receiver %>">
+                                 <textarea class="form-control input-lg p-text-area" name="post" id="post" rows="2" placeholder="Whats in your mind today?"></textarea>
+                                 <div class="box-footer box-form">
+                                    <button type="submit" id="p" class="btn btn-azure pull-right">Post</button>
+                                    <ul class="nav nav-pills">
+                                       <li><a href="#"><i class="fa fa-map-marker"></i></a></li>
+                                       <li><a href="#"><i class="fa fa-camera"></i></a></li>
+                                    </ul>
+                                 </div>
+                              </form>
+                           </div>
+                           <!-- end post state form -->
+                           <!--  posts -->
+                           <% for(var i = user.post.length-1; i>=0 ;i--){ %>
+                           <form method="post" action="/posts" >
+                              <div class="box box-widget">
+                                 <div class="box-header with-border">
+                                    <div class="user-block">
+                                       <img class="img-circle" src="/product_images/<%= user._id %>/<%= user.image %>" alt="User Image">
+                                       <%
+                                          var options = {  
+                                          	year: "numeric", month: "short",  
+                                          	day: "numeric", hour: "2-digit", minute: "2-digit"  
+                                          }
+                                          	
+                                          
+                                          	var date = user.post[i].date.toLocaleTimeString("en-US",options);
+                                          %>
+                                       <span class="username"><a href="#"><%= user.post[i].username %></a></span>
+                                       <span class="description">Shared publicly - <%= date %></span>
+                                    </div>
+                                 </div>
+                                 <div class="box-body" style="display: block;">
+                                    <p>
+                                       <%= user.post[i].post %>
+                                    </p>
+                                    <input type="hidden" name="id2" id="id2" value="<%= user.post[i]._id %>">
+                                    <input type="hidden" name="rec2" id="rec2" value="<%= receiver %>">
+                                    <button type="button" name="like" id="like" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                                    <span class="pull-right text-muted"><%= user.post[i].likes.length %> likes - <%= user.post[i].comments.length %> comments</span>
+                                 </div>
+                                 <div class="box-footer box-comments" style="display: block;">
+                                    <% for(var j =0;j< user.post[i].comments.length; j++){ %>
+                                    <div class="box-comment">
+                                       <img class="img-circle img-sm" src="/product_images/<%= user.post[i].comments[j].userId %>/<%= user.post[i].comments[j].image %>" alt="User Image">
+                                       <div class="comment-text">
+                                          <span class="username">
+                                          <%= user.post[i].comments[j].name %>
+                                          <%
+                                             var options = {  
+                                             	
+                                             	 weekday: "long", hour: "2-digit", minute: "2-digit"  
+                                             }
+                                             	
+                                             
+                                             	var date2 = user.post[i].comments[j].date.toLocaleTimeString("en-US",options);
+                                             %>
+                                          <span class="text-muted pull-right"><%= date2 %></span>
+                                          </span>
+                                          <%= user.post[i].comments[j].comment %>
+                                       </div>
+                                    </div>
+                                    <% } %>
+                                 </div>
+                                 <div class="box-footer" style="display: block;">
+                                    <img class="img-responsive img-circle img-sm" src="/product_images/<%= user._id %>/<%= user.image %>" alt="Alt Text">
+                                    <div class="img-push">
+                                       <input id="comment" name="comment" type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                                    </div>
+                                    <input type="hidden" id="favourite">
+                                    <input type="hidden" name="id" id="id" value="<%= user.post[i]._id %>">
+                                    <input type="hidden" name="post" id="post" value="<%=user.post[i].post %>">
+                                    <input type="hidden" name="receiver" id="receiver" value="<%=receiver %>">
+                                 </div>
+                              </div>
+                              <!--  end posts -->
+                           </form>
+                           <% } %>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- end left posts-->
+               </div>
+            </div>
+            <!-- end timeline posts-->
+         </div>
+      </div>
+      <!-- end timeline -->
+      <!-- about -->
+      <div role="tabpanel" class="tab-pane" id="profile">
+         <% if(user.aboutprivacy == 'me') { %>
+         <div>You cannot View this  content</div>
+         <% } else { %>
+         <div class="row container-contact">
+            <div class="col-md-12">
+               <div class="row">
+                  <div class="col-md-4 col-md-5 col-xs-12">
+                     <div class="row">
+                        <div class="col-xs-3">
+                           Email:
+                        </div>
+                        <div class="col-xs-9">
+                           <%= user.email %>
+                        </div>
+                        <div class="col-xs-3">
+                           Phone:
+                        </div>
+                        <div class="col-xs-9">
+                           <%= user.phone %>
+                        </div>
+                        <div class="col-xs-3">
+                           Address:
+                        </div>
+                        <div class="col-xs-9">
+                           <%= user.address %>
+                        </div>
+                        <div class="col-xs-3">
+                           Birthday:
+                        </div>
+                        <div class="col-xs-9">
+                           <%= user.birthday %>
+                        </div>
+                        <div class="col-xs-3">
+                           URL:
+                        </div>
+                        <div class="col-xs-9">
+                           <%= user.website %>
+                        </div>
+                        <div class="col-xs-3">
+                           Job:
+                        </div>
+                        <div class="col-xs-9">
+                           <%= user.job %>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-8 col-md-7 col-xs-12">
+                     <p class="contact-description"><%= user.aboutme %></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <% } %>
+      </div>
+      <!-- end about -->
+      <!-- friends -->
+      <div role="tabpanel" class="tab-pane" id="messages">
+         <div class="row">
+            <% for(var i = 0;i<user.friendList.length;i++){ %>
+            <div class="col-md-3">
+               <div class="contact-box center-version">
+                  <a href="#">
+                     <img alt="image" class="img-circle" src=/product_images/<%= user.friendList[i].friendId %>/<%= user.friendList[i].image %>>
+                     <h3 class="m-b-xs"><strong><%= user.friendList[i].friendName %></strong></h3>
+                  </a>
+                  <div class="contact-box-footer">
+                     <div class="m-t-xs btn-group">
+                        <a  href="/user/<%=user.friendList[i].friendName%>" class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i>View Profile</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <% } %>
+         </div>
+      </div>
+      <!-- end friends -->
+      <!-- photos -->
+      <div role="tabpanel" class="tab-pane" id="settings">
+         <div class="container">
+            <div class="gallery">
+               <% if(g){ %>
+               <% for(var i= 0;i<g.length-1; i++){ %>
+               <figure>
+                  <img src="/product_images/<%= user._id %>/gallery/thumbs/<%= g[i] %>"> 
+               </figure>
+               <% } %>
+               <% } %>
+            </div>
+         </div>
+      </div>
+      <script>
+         popup = {
+         init: function(){
+         $('figure').click(function(){
+           popup.open($(this));
+         });
+         
+         $(document).on('click', '.popup img', function(){
+           return false;
+         }).on('click', '.popup', function(){
+           popup.close();
+         })
+         },
+         open: function($figure) {
+         $('.gallery').addClass('pop');
+         $popup = $('<div class="popup" />').appendTo($('body'));
+         $fig = $figure.clone().appendTo($('.popup'));
+         $bg = $('<div class="bg" />').appendTo($('.popup'));
+         $close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
+         $shadow = $('<div class="shadow" />').appendTo($fig);
+         src = $('img', $fig).attr('src');
+         $shadow.css({backgroundImage: 'url(' + src + ')'});
+         $bg.css({backgroundImage: 'url(' + src + ')'});
+         setTimeout(function(){
+           $('.popup').addClass('pop');
+         }, 10);
+         },
+         close: function(){
+         $('.gallery, .popup').removeClass('pop');
+         setTimeout(function(){
+           $('.popup').remove()
+         }, 100);
+         }
+         }
+         
+         popup.init()
+         
+      </script>
+      <script src="/js/request.js"></script>
+      <script src="/js/comment.js"></script>
+   </body>
+</html>

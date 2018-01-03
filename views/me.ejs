@@ -1,0 +1,51 @@
+<html>
+   <head>
+      <link href="css/simple.css" rel="stylesheet">
+      <link href="css/custom.css" rel="stylesheet">
+   </head>
+   <body>
+      <h2>File Upload & Image Preview</h2>
+      <p class="lead">No Plugins <b>Just Javascript</b></p>
+      <!-- Upload  -->
+      <form id="file-upload-form" class="uploader" method="post" action="/me" enctype="multipart/form-data">
+         <input id="file-upload" type="file" name="image" accept="image/*" />
+         <label for="file-upload" id="file-drag">
+            <img id="file-image" src="#" alt="Preview" class="hidden">
+            <div id="start">
+               <i class="fa fa-download" aria-hidden="true"></i>
+               <div>Select a file or drag here</div>
+               <div id="notimage" class="hidden">Please select an image</div>
+               <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+            </div>
+            <div id="response" class="hidden">
+               <div id="messages"></div>
+               <progress class="progress" id="file-progress" value="0">
+               <span>0</span>%
+               </progress>
+            </div>
+         </label>
+         <button type="submit">Done!</button>
+         <button><a href="/profile">Go to back</a></button>
+      </form>
+      <button><a href="/edit/<%=user._id %>">Go to Photos</a></button>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script>
+         function readURL(input){
+         	if(input.files && input.files[0]){
+         		var reader = new FileReader()
+         		reader.onload = function(e){
+         			$("#imgPreview").attr('src',e.target.result).width(100).height(100)
+         		}
+         		reader.readAsDataURL(input.files[0])
+         	}
+         }
+         	$("#img").change(function(){
+         		readURL(this)
+         	})
+         
+         
+      </script>
+      <script src="/js/image_edit.js"></script>
+   </body>
+</html>

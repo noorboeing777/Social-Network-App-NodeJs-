@@ -1,0 +1,57 @@
+
+<html>
+<head></head>
+<body>
+
+<button><a href="/profile">Go Back</a></button>
+<p>
+
+<img id="noimage" src="/product_images/<%= p._id %>/<%- p.image %>">
+
+</p>
+		<h3 class="page-header">Gallery</h3>
+<ul class="gallery">
+    <%=if(gallaryImages){ %>
+		
+		<% galleryImages.forEach(function(img) { %>
+		<% if(img != "thumbs") { %>
+	
+		<li>
+			<img src="/product_images/<%= p._id %>/gallery/thumbs/<%= img %>" width="100">
+			<a class="confirmDeletion" href="/admin/products/delete-image/<%= img %>?id=<%= p.id %>">delete</a>
+	
+	</li>
+	<% } %>
+	<% }) %>
+    <% } %>
+		
+		
+		
+		</ul>
+	<br></br>
+	<form action = "/admin/products/product-gallery/<%= p.id %>" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+		<div class="fallback">
+		<input type="file" name="file" multiple>
+		<input type="submit" value="Upload">
+		</div>
+		</form>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/basic.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css"> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.js"></script>
+	<script>
+	
+		Dropzone.options.dropzoneForm = {
+		acceptedFiles: "image/*",
+		init: function(){
+			this.on("queuecomplete",function(file){
+				setTimeout(function(){
+					location.reload()
+				},1000)
+			})
+		}
+	}
+	
+	
+	</script>
+	</body>
+</html>
