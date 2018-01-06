@@ -1,6 +1,8 @@
 This is an Advance Social Networking Application i have developed 
-BY advance I MEAN it MIMICS real social networking app
-
+FRONT-END: BOOTSTRAP/HTML/CSS
+BACK-END: NODE-JS
+DATABASE: MONGODB
+CLOUD: MLAB ABD HEROKU
 
 FEATURES: 
 1: User can login/signup/reset password
@@ -10,5 +12,12 @@ FEATURES:
 5: user can edit their profile can add and delete things
 6:user can set profile privacy type like :Friend privacy,user privacy,post privacy image privacy
 7: Admin can add/delete user can set their status and set to block or prending
-
-ALL I HAVE ACHIEVED USING BOOTSTRAP,HTML/CSS AND NODEJS WITH MONGODB BACKEND
+ 
+ DEMO:
+ 
+ 
+ https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png
+ https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png
+ https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png
+ https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png
+ https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png
