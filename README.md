@@ -16,12 +16,24 @@ FEATURES:
  DEMO:
  
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png)
+ 
+ Friends
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s5.png)
+ 
+ user can edit profile
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s6.png)
+ 
+ Message  
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s7.png)
+ 
+ All users
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s8.png)
+ 
+ My profile
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s9.png)
+ 
+ Privacy type
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s10.png)
- ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s11.png)
+
 
 
