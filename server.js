@@ -105,7 +105,7 @@ io.on('connection',(socket)=>{
 
 server.listen(port,function(){
 	
-	console.log('App runnign on port 3000');
+	console.log('App runnign on '+ port);
 	
 	
 })

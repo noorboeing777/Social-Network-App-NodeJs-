@@ -12,11 +12,9 @@ module.exports = (app, passport) => {
 	app.get('/', function (req, res, next) {
 
 		if (req.session.cookie.originalMaxAge != null) {
-			res.redirect('/')
+			res.redirect('/profile')
 		} else {
-			res.render('index', {
-				user: req.user
-			});
+			res.redirect('/login')
 		}
 	})
 	app.get('/logout', function (req, res) {
@@ -30,7 +28,7 @@ module.exports = (app, passport) => {
 	app.get('/signup', (req, res) => {
 		const errors = req.flash('error')
 		res.render('user/signup', {
-			title: 'Football | Signup',
+			title: 'social',
 			messages: errors,
 			hasErrors: errors.length > 0
 		});
@@ -39,7 +37,7 @@ module.exports = (app, passport) => {
 	app.get('/login', (req, res) => {
 		const errors = req.flash('error')
 		res.render('user/login', {
-			title: 'Football | Signup',
+			title: 'Social',
 			messages: errors,
 			hasErrors: errors.length > 0
 		});
@@ -66,8 +64,8 @@ module.exports = (app, passport) => {
 		res.redirect('/profile')
 	})
 
-	app.get('/home', isLoggedIn, function (req, res) {
-		res.render('home', {
+	app.get('/profile', isLoggedIn, function (req, res) {
+		res.render('realprofile', {
 			user: req.user
 		});
 	})
@@ -76,7 +74,7 @@ module.exports = (app, passport) => {
 		var errors = req.flash('error')
 		var info = req.flash('info')
 		res.render('user/forgot', {
-			title: 'Football | Signup',
+			title: 'social',
 			messages: errors,
 			hasErrors: errors.length > 0,
 			info: info,
@@ -250,7 +248,7 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		next()
 	} else {
-		res.redirect('/')
+		res.redirect('/login')
 	}
 }
 
