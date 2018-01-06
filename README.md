@@ -13,7 +13,10 @@ FEATURES:
 6:user can set profile privacy type like :Friend privacy,user privacy,post privacy image privacy
 7: Admin can add/delete user can set their status and set to block or prending
  
- DEMO:
+ DEMO: 
+ https://radiant-badlands-89367.herokuapp.com/login
+ login detail : email: testing1@hotmail.com
+                password: testing11
  
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png)
  
