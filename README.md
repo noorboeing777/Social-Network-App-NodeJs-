@@ -17,31 +17,57 @@
 8. notification about friend requests and new messages.
 9. Admin can add/delete user can set their status and set to block or prending - admin pannel
  
- DEMO: 
+ ###### DEMO:
+ 
  - https://radiant-badlands-89367.herokuapp.com/login
- - ######login detail:
+ - ###### login detail:
  - email: testing1@hotmail.com
  - password: testing11
  
- ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png)
+ ###### Screenshots 
  
- Friends
+ ###### home page
+ 
+ ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/profile.png)
+ 
+  ###### My profile
+  
+  
+ ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/home.png)
+ 
+###### Friends 
+
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s5.png)
  
- user can edit profile
+###### User editing profile
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s6.png)
  
- Message  
- ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s7.png)
+ ###### Privacy Settings
+ ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s10.png)
+ 
+ ###### Messages 
+ ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/msg.png)
  
  All users
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s8.png)
+
+###### Admin 
+
+ ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/admin.png)
  
- My profile
- ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s9.png)
+ ###### what happen if admin ban you and you try to login
  
- Privacy type
- ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s10.png)
+  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/ban.png)
+  
+  ###### forgot password 
+  
+   ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/forgot.png)
+   
+   ###### validation
+   
+    ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/wrong.png)
+ 
+
 
 
 
