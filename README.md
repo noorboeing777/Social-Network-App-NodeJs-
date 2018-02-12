@@ -6,14 +6,16 @@
 - DATABASE: MONGODB
 - CLOUD: MLAB ABD HEROKU
 
-FEATURES: 
-1: User can login/signup/reset password
-2: User can search other users send them friend request and message
-3: User can make posts and other users can make comments on it
-4: User can upload profile photos and gallary
-5: user can edit their profile can add and delete things
-6:user can set profile privacy type like :Friend privacy,user privacy,post privacy image privacy
-7: Admin can add/delete user can set their status and set to block or prending
+###### FEATURES: 
+1 User can login/signup/reset password
+2 User can search other users send them friend request,message or live chat
+3 User can make posts and other users can make comments on it.
+4 User can upload profile photos and gallary
+5 user can edit their profile can add and delete contents
+6 user can set profile privacy type like :Friend privacy,user privacy,post privacy image privacy
+7 notification of who is online 
+8 notification about friend requests and new messages.
+9 Admin can add/delete user can set their status and set to block or prending
  
  DEMO: 
  https://radiant-badlands-89367.herokuapp.com/login
