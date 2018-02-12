@@ -1,4 +1,4 @@
-# This is an Advance Social Networking Application I have developed 
+# This is an Advance Social Networking Application I have developed (REST API)
 
 
 - FRONT-END: BOOTSTRAP/HTML/CSS
@@ -7,20 +7,21 @@
 - CLOUD: MLAB ABD HEROKU
 
 ###### FEATURES: 
-1. User can login/signup/reset password
-2. User can search other users send them friend request,message or live chat
+1. User can login/signup/reset password - passport.js,nodemailer
+2. User can search other users send them friend request,message or live chat - complex queries and socket.io for live chat
 3. User can make posts and other users can make comments on it.
-4. User can upload profile photos and gallary
-5. user can edit their profile can add and delete contents
+4. User can upload profile photos and gallary - JQuery plugin
+5. user can edit their profile can add and delete contents -CRUD operation
 6. user can set profile privacy type like :Friend privacy,user privacy,post privacy image privacy
 7. notification of who is online 
 8. notification about friend requests and new messages.
-9. Admin can add/delete user can set their status and set to block or prending
+9. Admin can add/delete user can set their status and set to block or prending - admin pannel
  
  DEMO: 
- https://radiant-badlands-89367.herokuapp.com/login
- login detail : email: testing1@hotmail.com
-                password: testing11
+ - https://radiant-badlands-89367.herokuapp.com/login
+ - ######login detail:
+ - email: testing1@hotmail.com
+ - password: testing11
  
  ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/s4.png)
  
