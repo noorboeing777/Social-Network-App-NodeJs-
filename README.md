@@ -61,11 +61,11 @@
   
   ###### forgot password 
   
-   ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/forgot.png)
+   ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/forgot pass.png)
    
    ###### validation
    
-    ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/wrong.png)
+   ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/wrong.png)
  
 
 
