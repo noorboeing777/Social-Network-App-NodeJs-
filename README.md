@@ -4,7 +4,7 @@
 - FRONT-END: BOOTSTRAP/HTML/CSS
 - BACK-END: NODE-JS
 - DATABASE: MONGODB
-- CLOUD: MLAB ABD HEROKU
+- CLOUD: MLAB AND HEROKU
 
 ###### FEATURES: 
 1. User can login/signup/reset password - passport.js,nodemailer
@@ -61,7 +61,7 @@
   
   ###### forgot password 
   
-   ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/forgot pass.png)
+   ![alt text]( https://github.com/noorboeing777/Social-Network-App-NodeJs-/blob/master/shot/forgot.png)
    
    ###### validation
    
